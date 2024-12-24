@@ -1,80 +1,58 @@
-<div class="container">
-  <div class="row">
-    <form class="row g-3">
-      <!-- Plant Code -->
-      <div class="col-md-6">
-        <label for="plantCode" class="form-label">Plant Code</label>
-        <input type="text" class="form-control" id="plantCode" name="plantCode" placeholder="Enter plant code">
-      </div>
-
-      <!-- Plant Name -->
-      <div class="col-md-6">
-        <label for="plantName" class="form-label">Plant Name</label>
-        <input type="text" class="form-control" id="plantName" name="plantName" placeholder="Enter plant name">
-      </div>
-
-      <!-- Plant Type -->
-      <div class="col-md-6">
-        <label for="plantType" class="form-label">Plant Type</label>
-        <select id="plantType" class="form-select" name="plantType">
-          <option selected>Choose...</option>
-          <option value="vegetable">Vegetable</option>
-          <option value="fruit">Fruit</option>
-          <option value="herb">Herb</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <!-- Soil Type -->
-      <div class="col-md-6">
-        <label for="soilType" class="form-label">Soil Type</label>
-        <select id="soilType" class="form-select" name="soilType">
-          <option selected>Choose...</option>
-          <option value="sandy">Sandy</option>
-          <option value="clay">Clay</option>
-          <option value="loamy">Loamy</option>
-        </select>
-      </div>
-
-      <!-- Temperature Range -->
-      <div class="col-md-6">
-        <label for="temperatureRange" class="form-label">Temperature Range</label>
-        <input type="text" class="form-control" id="temperatureRange" name="temperatureRange" placeholder="e.g., 18-25°C">
-      </div>
-
-      <!-- Humidity Range -->
-      <div class="col-md-6">
-        <label for="humidityRange" class="form-label">Humidity Range</label>
-        <input type="text" class="form-control" id="humidityRange" name="humidityRange" placeholder="e.g., 40-60%">
-      </div>
-
-      <!-- Light Requirement -->
-      <div class="col-md-6">
-        <label for="lightRequirement" class="form-label">Light Requirement</label>
-        <select id="lightRequirement" class="form-select" name="lightRequirement">
-          <option selected>Choose...</option>
-          <option value="fullSun">Full Sun</option>
-          <option value="partialSun">Partial Sun</option>
-          <option value="shade">Shade</option>
-        </select>
-      </div>
-
-      <!-- Watering Frequency -->
-      <div class="col-md-6">
-        <label for="wateringFrequency" class="form-label">Watering Frequency</label>
-        <input type="text" class="form-control" id="wateringFrequency" name="wateringFrequency" placeholder="e.g., Twice a week">
-      </div>
-
-      <!-- Last Updated -->
-      <div class="col-md-6">
-        <label for="lastUpdated" class="form-label">Last Updated</label>
-        <input type="date" class="form-control" id="lastUpdated" name="lastUpdated">
-      </div>
-
-      <!-- Submit Button -->
-      <div class="col-12">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
-  </div>
+<div class="container mt-4">
+  <h2>Add New Plant</h2>
+  <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="plantCode" class="form-label">Plant Code</label>
+      <input type="text" id="plantCode" class="form-control" formControlName="plantCode" />
+    </div>
+    <div class="mb-3">
+      <label for="plantName" class="form-label">Plant Name</label>
+      <input type="text" id="plantName" class="form-control" formControlName="plantName" />
+    </div>
+    <div class="mb-3">
+      <label for="plantType" class="form-label">Plant Type</label>
+      <select id="plantType" class="form-select" formControlName="plantType">
+        <option value="" disabled selected>Select Plant Type</option>
+        <option value="vegetable">Vegetable</option>
+        <option value="fruit">Fruit</option>
+        <option value="herb">Herb</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="soilType" class="form-label">Soil Type</label>
+      <select id="soilType" class="form-select" formControlName="soilType">
+        <option value="" disabled selected>Select Soil Type</option>
+        <option value="sandy">Sandy</option>
+        <option value="clay">Clay</option>
+        <option value="loamy">Loamy</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="temperatureRange" class="form-label">Temperature Range</label>
+      <input type="text" id="temperatureRange" class="form-control" formControlName="temperatureRange" />
+    </div>
+    <div class="mb-3">
+      <label for="humidityRange" class="form-label">Humidity Range</label>
+      <input type="text" id="humidityRange" class="form-control" formControlName="humidityRange" />
+    </div>
+    <div class="mb-3">
+      <label for="lightRequirement" class="form-label">Light Requirement</label>
+      <select id="lightRequirement" class="form-select" formControlName="lightRequirement">
+        <option value="" disabled selected>Select Light Requirement</option>
+        <option value="fullSun">Full Sun</option>
+        <option value="partialSun">Partial Sun</option>
+        <option value="shade">Shade</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="wateringFrequency" class="form-label">Watering Frequency</label>
+      <input type="text" id="wateringFrequency" class="form-control" formControlName="wateringFrequency" />
+    </div>
+    <div class="mb-3">
+      <label for="lastUpdated" class="form-label">Last Updated</label>
+      <input type="date" id="lastUpdated" class="form-control" formControlName="lastUpdated" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
