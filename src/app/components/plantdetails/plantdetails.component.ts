@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlantService } from '../../services/plant.service';
 import { Plant } from '../../model/plant.model';
 import { format } from 'date-fns';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plantdetails',
@@ -14,7 +15,7 @@ import { format } from 'date-fns';
 export class PlantdetailsComponent {
   plantForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private plantService: PlantService) {
+  constructor(private fb: FormBuilder, private plantService: PlantService, private router: Router) {
     this.plantForm = this.fb.group({
       plantCode: ['', Validators.required],
       plantName: ['', Validators.required],
@@ -52,6 +53,8 @@ export class PlantdetailsComponent {
       alert('Please fill out all required fields.');
     }
   }
-  
+  goBack(): void {
+    this.router.navigate(['/plant']);
+  }
 
 }

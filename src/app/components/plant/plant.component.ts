@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlantService } from '../../services/plant.service';
 import { Plant } from '../../model/plant.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plant',
@@ -13,7 +14,7 @@ export class PlantComponent implements OnInit{
 
   plants: Plant[] = []; // Initialize an empty array to store plants.
 
-  constructor(private plantService: PlantService) {
+  constructor(private plantService: PlantService,private router: Router) {
     this.getPlants();
   }
 
@@ -31,6 +32,11 @@ export class PlantComponent implements OnInit{
         console.error('Error fetching plants:', error);
       }
     );
+  }
+
+  addNewPlant(): void {
+    // Navigate to the plantdetails page
+    this.router.navigate(['/plantdetails']);
   }
 
   editPlant(plant: Plant): void {
