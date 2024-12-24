@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PlantdetailsComponent } from './components/plantdetails/plantdetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlantComponent,
-    PlantComponent
+    PlantComponent,
+    PlantdetailsComponent
   ],
   exports:[PlantComponent],
   imports: [
