@@ -7,5 +7,5 @@ export interface Plant {
     humidityRange?: string;
     lightRequirement?: string;
     wateringFrequency?: string;
-    lastUpdated?: Date; // Optional field for last updated time
+    lastUpdated?: string; // Optional field for last updated time
   }
