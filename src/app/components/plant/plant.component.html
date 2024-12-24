@@ -1,35 +1,48 @@
-<div class="container mt-4">
-    <h2 class="text-center mb-4">Plants List</h2>
-    <div *ngIf="plants.length > 0; else noPlants">
-      <table class="table table-striped table-bordered table-hover">
-        <thead class="table-dark">
+<div class="container mt-5">
+    <h2 class="text-center mb-4 display-6 text-primary">Plant Management</h2>
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-end mb-4 gap-2">
+    <button class="btn btn-outline-success">
+      <i class="bi bi-plus-lg"></i> Add New Plant
+    </button>
+    <button class="btn btn-outline-info">
+      <i class="bi bi-search"></i> Search Plant
+    </button>
+  </div>
+    <div class="table-responsive" *ngIf="plants.length > 0; else noPlants">
+      <table class="table table-striped align-middle">
+        <thead class="table-primary text-center">
           <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Type</th>
-            <th>Actions</th>
+            <th class="align-middle" scope="col">Plant Code</th>
+            <th class="align-middle" scope="col">Plant Name</th>
+            <th class="align-middle" scope="col">Plant Type</th>
+            <th class="align-middle" scope="col">Soil Type</th>
+            <th class="align-middle" scope="col">Temperature Range °C</th>
+            <th class="align-middle" scope="col">Humidity Range %</th>
+            <th class="align-middle" scope="col">Light Requirement</th>
+            <th class="align-middle" scope="col">Watering Frequency</th>
+            <th class="align-middle" scope="col">Last Updated</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let plant of plants">
-            <td>{{ plant.plantName }}</td>
-            <td>{{ plant.plantCode }}</td>
-            <td>{{ plant.plantType }}</td>
-            <td>
-              <button class="btn btn-primary btn-sm me-2" (click)="editPlant(plant)">
-                <i class="bi bi-pencil"></i> Edit
-              </button>
-              <button class="btn btn-danger btn-sm" (click)="deletePlant(plant.plantCode)">
-                <i class="bi bi-trash"></i> Delete
-              </button>
-            </td>
+            <td class="text-start">{{ plant.plantCode }}</td>
+            <td class="text-start">{{ plant.plantName }}</td>
+            <td class="text-start">{{ plant.plantType }}</td>
+            <td class="text-start">{{ plant.soilType }}</td>
+            <td class="text-start">{{ plant.temperatureRange }}</td>
+            <td class="text-start">{{ plant.humidityRange }}</td>
+            <td class="text-start">{{ plant.lightRequirement }}</td>
+            <td class="text-start">{{ plant.wateringFrequency }}</td>
+            <td class="text-start">{{ plant.lastUpdated | date:'MM/dd/yyyy' }}</td>
           </tr>
         </tbody>
       </table>
     </div>
     <ng-template #noPlants>
-      <div class="alert alert-warning text-center">
-        <p class="mb-0">No plants available. Please add some plants.</p>
+      <div class="alert alert-light text-center shadow-sm">
+        <i class="bi bi-info-circle text-info fs-3"></i>
+        <p class="mt-2 mb-0 fs-5 text-secondary">No plants available. Please add some plants.</p>
       </div>
     </ng-template>
   </div>
