@@ -43,6 +43,12 @@ export class PlantsearchComponent implements OnInit {
       this.errorMessage = '';
     }
   }
+  navigateToUpdate(plant: Plant | null): void {
+    if (plant) {
+      this.router.navigate(['/plantupdate', plant.plantCode]);
+    }
+  }
+  
   
   editPlant(plant: Plant): void {
     // Logic for editing plant

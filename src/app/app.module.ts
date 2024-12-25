@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlantdetailsComponent } from './components/plantdetails/plantdetails.component';
 import { PlantsearchComponent } from './components/plantsearch/plantsearch.component';
+import { PlantupdateComponent } from './components/plantupdate/plantupdate.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PlantsearchComponent } from './components/plantsearch/plantsearch.compo
     PlantComponent,
     PlantComponent,
     PlantdetailsComponent,
-    PlantsearchComponent
+    PlantsearchComponent,
+    PlantupdateComponent
   ],
   exports:[PlantComponent],
   imports: [

@@ -40,5 +40,9 @@ export class PlantService {
     addPlant(plant: Plant): Observable<Plant> {
       return this.http.post<Plant>(`${this.apiUrl}/create`, plant);
     }
+    updatePlant(plantCode: string, plant: Plant): Observable<Plant> {
+      return this.http.put<Plant>(`${this.apiUrl}/update/${plantCode}`, plant);
+    }
+    
 
 }

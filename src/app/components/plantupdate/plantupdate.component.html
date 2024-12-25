@@ -1,0 +1,128 @@
+<div class="container mt-4"> 
+  <!-- Back Button -->
+  <div class="d-flex justify-content-start mb-4">
+    <button class="btn btn-secondary" (click)="goBack()">
+      <i class="bi bi-arrow-left"></i> Back to Plants List
+    </button>
+  </div>
+
+  <h2 class="text-center mb-4">Update Plant</h2>
+
+  <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <!-- Plant Code -->
+      <div class="col-md-6 mb-3">
+        <label for="plantCode" class="form-label">Plant Code</label>
+        <input 
+          type="text" 
+          id="plantCode" 
+          class="form-control" 
+          formControlName="plantCode" 
+          [disabled]="true" />
+      </div>
+
+      <!-- Plant Name -->
+      <div class="col-md-6 mb-3">
+        <label for="plantName" class="form-label">Plant Name</label>
+        <input 
+          type="text" 
+          id="plantName" 
+          class="form-control" 
+          formControlName="plantName" 
+          placeholder="Enter plant name" />
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Plant Type -->
+      <div class="col-md-6 mb-3">
+        <label for="plantType" class="form-label">Plant Type</label>
+        <select id="plantType" class="form-select" formControlName="plantType">
+          <option [value]="null" disabled>Select Plant Type</option>
+          <option value="vegetable">Vegetable</option>
+          <option value="fruit">Fruit</option>
+          <option value="herb">Herb</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- Soil Type -->
+      <div class="col-md-6 mb-3">
+        <label for="soilType" class="form-label">Soil Type</label>
+        <select id="soilType" class="form-select" formControlName="soilType">
+          <option [value]="null" disabled>Select Soil Type</option>
+          <option value="sandy">Sandy</option>
+          <option value="clay">Clay</option>
+          <option value="loamy">Loamy</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Temperature Range -->
+      <div class="col-md-6 mb-3">
+        <label for="temperatureRange" class="form-label">Temperature Range</label>
+        <input 
+          type="text" 
+          id="temperatureRange" 
+          class="form-control" 
+          formControlName="temperatureRange" 
+          placeholder="Enter temperature range" />
+      </div>
+
+      <!-- Humidity Range -->
+      <div class="col-md-6 mb-3">
+        <label for="humidityRange" class="form-label">Humidity Range</label>
+        <input 
+          type="text" 
+          id="humidityRange" 
+          class="form-control" 
+          formControlName="humidityRange" 
+          placeholder="Enter humidity range" />
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Light Requirement -->
+      <div class="col-md-6 mb-3">
+        <label for="lightRequirement" class="form-label">Light Requirement</label>
+        <select id="lightRequirement" class="form-select" formControlName="lightRequirement">
+          <option [value]="null" disabled>Select Light Requirement</option>
+          <option value="fullSun">Full Sun</option>
+          <option value="partialSun">Partial Sun</option>
+          <option value="shade">Shade</option>
+        </select>
+      </div>
+
+      <!-- Watering Frequency -->
+      <div class="col-md-6 mb-3">
+        <label for="wateringFrequency" class="form-label">Watering Frequency</label>
+        <input 
+          type="text" 
+          id="wateringFrequency" 
+          class="form-control" 
+          formControlName="wateringFrequency" 
+          placeholder="Enter watering frequency" />
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Last Updated -->
+      <div class="col-md-6 mb-3">
+        <label for="lastUpdated" class="form-label">Last Updated</label>
+        <input 
+          type="date" 
+          id="lastUpdated" 
+          class="form-control" 
+          formControlName="lastUpdated" />
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-warning">
+        <i class="bi bi-save"></i> Update
+      </button>
+    </div>
+  </form>
+</div>
