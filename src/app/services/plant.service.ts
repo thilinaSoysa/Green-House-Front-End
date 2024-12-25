@@ -12,12 +12,12 @@ export class PlantService {
   // Fetch all plants
   /*getPlants(): Observable<any> {
     return this.http.get(`${this.baseUrl}/all`);
-  }
+  }*/
   // Fetch plant by code
   getPlantByCode(plantCode: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/code/${plantCode}`);
+    return this.http.get(`${this.apiUrl}/code/${plantCode}`);
   }
-  // Add new plant
+  /*// Add new plant
   addPlant(plant: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/create`, plant);
   }

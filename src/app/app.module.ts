@@ -9,13 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlantdetailsComponent } from './components/plantdetails/plantdetails.component';
+import { PlantsearchComponent } from './components/plantsearch/plantsearch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlantComponent,
     PlantComponent,
-    PlantdetailsComponent
+    PlantdetailsComponent,
+    PlantsearchComponent
   ],
   exports:[PlantComponent],
   imports: [

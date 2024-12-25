@@ -1,0 +1,67 @@
+<div class="container mt-4">
+    <!-- Back Button -->
+    <button class="btn btn-secondary mb-3" (click)="goBack()">
+      <i class="bi bi-arrow-left-circle"></i> Back to Plant List
+    </button>
+  
+    <h2>Search Plant</h2>
+  
+    <!-- Search Bar and Search Button -->
+    <div class="d-flex mb-3">
+      <input 
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="searchTerm" 
+        placeholder="Enter Plant Code"
+        (input)="onSearchChange()" />
+      <button 
+        type="button" 
+        class="btn btn-primary ms-2" 
+        (click)="onSearch()" 
+        [disabled]="!searchTerm">
+        Search
+      </button>
+    </div>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Search Results Table -->
+    <div *ngIf="plant" class="mt-4">
+      <h4>Plant Details</h4>
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ plant.plantName }}</td>
+            <td>{{ plant.plantCode }}</td>
+            <td>{{ plant.plantType }}</td>
+            <td>
+              <button 
+                class="btn btn-primary btn-sm me-2" 
+                (click)="editPlant(plant)"
+                [disabled]="!plant">
+                <i class="bi bi-pencil"></i> Update
+              </button>
+              <button 
+                class="btn btn-danger btn-sm" 
+                (click)="deletePlant(plant.plantCode)"
+                [disabled]="!plant">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
