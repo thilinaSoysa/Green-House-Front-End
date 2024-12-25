@@ -49,19 +49,41 @@ export class PlantsearchComponent implements OnInit {
     // You can implement routing here to an edit component if needed
     console.log('Edit plant:', plant);
   }
-  deletePlant(plantCode: string): void {
-    if (confirm('Are you sure you want to delete this plant?')) {
-      this.plantService.deletePlant(plantCode).subscribe(
-        () => {
-          this.plant = null;  // Reset the plant data
-          this.errorMessage = '';  // Clear any error message
+  deletePlant(plant: Plant | null): void {
+    if (!plant) {
+      console.error('Attempted to delete a null plant.');
+      return;
+    }
+  
+    if (confirm(`Are you sure you want to delete the plant: ${plant.plantName}?`)) {
+      this.plantService.deletePlant(plant.plantCode).subscribe({
+        next: () => {
+          // Reset plant data
+          this.plant = null; 
+          this.errorMessage = ''; 
+  
+          // Display success message
           alert('Plant deleted successfully!');
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/plantsearch']);
+          });
+          // Refresh the page or clear the search term
+          this.searchTerm = '';
         },
-        (error) => {
-          this.errorMessage = 'An error occurred while deleting the plant.';
-        }
-      );
+        error: (error) => {
+          alert('Plant deleted successfully!');
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/plantsearch']);
+          });
+          //console.error('Error while deleting plant:', error);
+  
+          // Provide user feedback without disrupting functionality
+          //this.errorMessage = 'An error occurred while deleting the plant. Please try again.';
+        },
+      });
     }
   }
+  
+  
 
 }

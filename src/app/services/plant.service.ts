@@ -34,7 +34,7 @@ export class PlantService {
     }
   
     deletePlant(plantCode: string): Observable<void> {
-      return this.http.delete<void>(`${this.apiUrl}/${plantCode}`);
+      return this.http.delete<void>(`${this.apiUrl}/delete/${plantCode}`);
     }
     
     addPlant(plant: Plant): Observable<Plant> {
