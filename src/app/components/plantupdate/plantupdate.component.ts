@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PlantService } from '../../services/plant.service';
 import { Plant } from '../../model/plant.model';
@@ -31,15 +31,15 @@ export class PlantupdateComponent implements OnInit{
 
   initializeForm(): void {
     this.plantForm = this.fb.group({
-      plantCode: [{ value: '', disabled: true }],
-      plantName: [''],
-      plantType: [''],
-      soilType: [''],
-      temperatureRange: [''],
-      humidityRange: [''],
-      lightRequirement: [''],
-      wateringFrequency: [''],
-      lastUpdated: ['']
+      plantCode: [{ value: '', disabled: true }, Validators.required],
+      plantName: ['', Validators.required],
+      plantType: ['', Validators.required],
+      soilType: ['', Validators.required],
+      temperatureRange: ['', Validators.required],
+      humidityRange: ['', Validators.required],
+      lightRequirement: ['', Validators.required],
+      wateringFrequency: ['', Validators.required],
+      lastUpdated: ['', Validators.required]
     });
   }
   loadPlantData(): void {
@@ -80,6 +80,9 @@ export class PlantupdateComponent implements OnInit{
           console.error(err);
         }
       });
+    }
+    else {
+      alert('Please fill out all required fields.');
     }
   }
   goBack(): void {
