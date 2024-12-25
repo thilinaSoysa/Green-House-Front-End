@@ -39,7 +39,8 @@
       </button>
       <button 
           class="btn btn-outline-warning" 
-          [disabled]="!plant">
+          [disabled]="!plant"
+          [routerLink]="['/plantupdate', plant?.plantCode]">
           <i class="bi bi-pencil"></i> Update
       </button>
   </div>

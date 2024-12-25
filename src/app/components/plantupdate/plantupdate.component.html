@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <h2 class="text-primary">Update Plant</h2>
+  
+    <form *ngIf="plant">
+      <!-- Fields for plant details -->
+      <div class="mb-3">
+        <label for="plantName" class="form-label">Plant Name</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="plantName" 
+          [(ngModel)]="plant.plantName" 
+          name="plantName">
+      </div>
+      <!-- Repeat for other fields -->
+      
+      <button class="btn btn-primary" (click)="onUpdate()">Update</button>
+      <button class="btn btn-secondary" (click)="goBacktoPrevious()">Cancel</button>
+    </form>
+  
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+  </div>
+  
