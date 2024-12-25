@@ -5,9 +5,9 @@
     <button class="btn btn-outline-success"(click)="addNewPlant()">
       <i class="bi bi-plus-lg"></i> Add New Plant
     </button>
-    <button class="btn btn-outline-info">
+    <a [routerLink]="'/plantsearch'" class="btn btn-outline-info">
       <i class="bi bi-search"></i> Search Plant
-    </button>
+  </a>
   </div>
     <div class="table-responsive" *ngIf="plants.length > 0; else noPlants">
       <table class="table table-striped align-middle">
