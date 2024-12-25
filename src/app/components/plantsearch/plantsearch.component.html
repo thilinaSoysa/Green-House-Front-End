@@ -1,13 +1,15 @@
 <div class="container mt-4">
     <!-- Back Button -->
-    <button class="btn btn-secondary mb-3" (click)="goBack()">
-      <i class="bi bi-arrow-left-circle"></i> Back to Plant List
-    </button>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-secondary" (click)="goBack()">
+        <i class="bi bi-arrow-left-circle"></i> Back to Plant List
+      </button>
   
-    <h2>Search Plant</h2>
+      <h2 class="text-primary">Search Plant</h2>
+    </div>
   
     <!-- Search Bar and Search Button -->
-    <div class="d-flex mb-3">
+    <div class="input-group mb-4">
       <input 
         type="text" 
         class="form-control" 
@@ -15,53 +17,68 @@
         placeholder="Enter Plant Code"
         (input)="onSearchChange()" />
       <button 
-        type="button" 
-        class="btn btn-primary ms-2" 
+        class="btn btn-primary" 
         (click)="onSearch()" 
         [disabled]="!searchTerm">
-        Search
+        <i class="bi bi-search"></i> Search
       </button>
     </div>
   
     <!-- Error Message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
+      <i class="bi bi-exclamation-circle-fill"></i>{{ errorMessage }}
     </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-start gap-3 mb-3">
+      <button 
+          class="btn btn-outline-danger" 
+          [disabled]="!plant">
+          <i class="bi bi-trash"></i> Delete
+      </button>
+      <button 
+          class="btn btn-outline-warning" 
+          [disabled]="!plant">
+          <i class="bi bi-pencil"></i> Update
+      </button>
+  </div>
   
     <!-- Search Results Table -->
-    <div *ngIf="plant" class="mt-4">
-      <h4>Plant Details</h4>
-      <table class="table table-striped table-bordered">
-        <thead class="table-dark">
+    <div *ngIf="plant" class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead class="table-dark text-center">
           <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Type</th>
-            <th>Actions</th>
+            <th>Plant Code</th>
+            <th>Plant Name</th>
+            <th>Plant Type</th>
+            <th>Soil Type</th>
+            <th>Temperature Range (°C)</th>
+            <th>Humidity Range (%)</th>
+            <th>Light Requirement</th>
+            <th>Watering Frequency</th>
+            <th>Last Updated</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{{ plant.plantName }}</td>
             <td>{{ plant.plantCode }}</td>
+            <td>{{ plant.plantName }}</td>
             <td>{{ plant.plantType }}</td>
-            <td>
-              <button 
-                class="btn btn-primary btn-sm me-2" 
-                (click)="editPlant(plant)"
-                [disabled]="!plant">
-                <i class="bi bi-pencil"></i> Update
-              </button>
-              <button 
-                class="btn btn-danger btn-sm" 
-                (click)="deletePlant(plant.plantCode)"
-                [disabled]="!plant">
-                <i class="bi bi-trash"></i> Delete
-              </button>
-            </td>
+            <td>{{ plant.soilType }}</td>
+            <td>{{ plant.temperatureRange }}</td>
+            <td>{{ plant.humidityRange }}</td>
+            <td>{{ plant.lightRequirement }}</td>
+            <td>{{ plant.wateringFrequency }}</td>
+            <td>{{ plant.lastUpdated | date: 'MM/dd/yyyy' }}</td>
           </tr>
         </tbody>
       </table>
     </div>
+
+  <!-- No Results Message -->
+  <div *ngIf="!plant && searchTerm && !errorMessage" class="alert alert-warning mt-3">
+      <i class="bi bi-info-circle"></i> No matching record found. Please try again.
+  </div>
+
   </div>
   
